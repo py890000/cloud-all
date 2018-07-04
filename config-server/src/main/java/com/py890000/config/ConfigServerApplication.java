@@ -1,4 +1,4 @@
-package com.py89000.config;
+package com.py890000.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

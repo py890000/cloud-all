@@ -1,4 +1,4 @@
-package com.py89000.config;
+package com.py890000.config;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
