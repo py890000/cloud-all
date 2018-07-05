@@ -34,3 +34,9 @@ getway/mvnw.cmd
 getway/target/
 
 *.cmd
+/getway/mvnw
+/getway/mvnw.cmd
+/getway/target/
+/getway/getway.iml
+/.gitignore
+/getway/.mvn/
