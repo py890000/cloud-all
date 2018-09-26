@@ -12,6 +12,7 @@
         <module>config-server</module>
         <module>eureka</module>
         <module>getway</module>
+        <module>user</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
