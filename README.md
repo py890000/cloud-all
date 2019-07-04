@@ -1,5 +1,6 @@
-# cloud-all
-# config-repo 配置资源
-# config-server 配置服务器
-# eureka  注册服务器
-# user  系统user 模块
+## cloud-all
+#### admin  监控
+#### eureka  注册服务
+#### getway  网关服务
+#### user  系统user 模块
+#### order  系统order 模块

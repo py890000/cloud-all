@@ -1,5 +1,8 @@
-/target/
+HELP.md
+target/
 !.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
 
 ### STS ###
 .apt_generated
@@ -15,36 +18,14 @@
 *.iws
 *.iml
 *.ipr
-*.mvn
 
 ### NetBeans ###
 /nbproject/private/
-/build/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-.DS_Store
-config-server/.mvn/
-config-server/mvnw
-config-server/mvnw.cmd
-config-server/target/
-getway/.mvn/
-getway/mvnw
-getway/mvnw.cmd
-getway/target/
+build/
 
-*.cmd
-/getway/mvnw
-/getway/mvnw.cmd
-/getway/target/
-/getway/getway.iml
-/.gitignore
-/getway/.mvn/
-eureka/mvnw
-
-eureka/target/
-user/target/
-/config-server/.mvn/
-/eureka/.mvn/
-/user/.mvn/
+### VS Code ###
+.vscode/
