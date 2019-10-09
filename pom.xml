@@ -8,13 +8,14 @@
     <name>cloud-all</name>
     <version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>config-repo</module>
-        <module>config-server</module>
-        <module>eureka</module>
+        <!--<module>config-repo</module>-->
+        <!--<module>config-server</module>-->
+        <!--<module>eureka</module>-->
         <module>getway</module>
         <module>user</module>
         <module>admin</module>
         <module>order</module>
+        <module>front-web</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -34,8 +35,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -43,6 +42,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>0.2.2.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
