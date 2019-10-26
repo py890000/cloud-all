@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.py890000.cloud.mybatis.config.TenantAutoConfigure

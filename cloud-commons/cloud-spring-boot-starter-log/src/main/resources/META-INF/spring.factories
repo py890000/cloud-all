@@ -1,0 +1,5 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.py890000.cloud.log.config.TtlMDCAdapterInitializer
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.py890000.cloud.log.config.LogAutoConfigure

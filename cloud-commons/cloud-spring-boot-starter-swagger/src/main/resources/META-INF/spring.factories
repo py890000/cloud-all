@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.py890000.cloud.swagger2.SwaggerAutoConfiguration
