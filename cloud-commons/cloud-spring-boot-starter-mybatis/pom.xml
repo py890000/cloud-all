@@ -8,15 +8,12 @@
         <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>cloud-spring-boot-starter-mybatis</artifactId>
-
     <name>cloud-spring-boot-starter-mybatis</name>
     <dependencies>
         <dependency>
             <groupId>com.py890000.cloud</groupId>
             <artifactId>cloud-commons-core</artifactId>
-            <version>0.0.1</version>
         </dependency>
 
         <dependency>

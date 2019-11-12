@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <artifactId>cloud-commons</artifactId>
     <description>通用组件</description>
+    <version>0.0.1</version>
     <modules>
         <module>cloud-commons-core</module>
         <module>cloud-spring-boot-starter-shiro</module>

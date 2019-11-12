@@ -18,6 +18,7 @@
         <!--<module>front-web</module>-->
         <module>cloud-commons</module>
         <module>cloud-auth-server</module>
+        <module>cloud-config</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -99,6 +100,51 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.py890000.cloud</groupId>
+                <artifactId>cloud-commons-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.py890000.cloud</groupId>
+                <artifactId>cloud-spring-boot-starter-log</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.py890000.cloud</groupId>
+                <artifactId>cloud-spring-boot-starter-log</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.py890000.cloud</groupId>
+                <artifactId>cloud-spring-boot-starter-mybatis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.py890000.cloud</groupId>
+                <artifactId>cloud-spring-boot-starter-oauth2</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.py890000.cloud</groupId>
+                <artifactId>cloud-spring-boot-starter-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.py890000.cloud</groupId>
+                <artifactId>cloud-spring-boot-starter-shiro</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.py890000.cloud</groupId>
+                <artifactId>cloud-spring-boot-starter-swagger</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
             <!-- druid 官方 starter -->
             <dependency>
                 <groupId>com.alibaba</groupId>

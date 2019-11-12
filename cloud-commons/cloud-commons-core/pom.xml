@@ -17,17 +17,16 @@
         <dependency>
             <groupId>com.py890000.cloud</groupId>
             <artifactId>cloud-spring-boot-starter-log</artifactId>
-            <version>0.0.1</version>
-        </dependency>
+           </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.social</groupId>
-            <artifactId>spring-social-security</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.social</groupId>-->
+            <!--<artifactId>spring-social-security</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>

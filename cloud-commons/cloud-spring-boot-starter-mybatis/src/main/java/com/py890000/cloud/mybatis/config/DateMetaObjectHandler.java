@@ -14,7 +14,6 @@ import java.util.Date;
 public class DateMetaObjectHandler implements MetaObjectHandler {
     private final static String UPDATE_TIME = "updateTime";
     private final static String CREATE_TIME = "createTime";
-
     /**
      * 插入填充，字段为空自动填充
      */
@@ -31,6 +30,9 @@ public class DateMetaObjectHandler implements MetaObjectHandler {
                 setFieldValByName(UPDATE_TIME, date, metaObject);
             }
         }
+
+
+
     }
 
     /**
