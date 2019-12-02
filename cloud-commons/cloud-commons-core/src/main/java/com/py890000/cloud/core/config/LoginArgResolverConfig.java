@@ -1,11 +1,7 @@
 package com.py890000.cloud.core.config;
 
 
-import com.py890000.cloud.core.feign.UserService;
 import com.py890000.cloud.core.resolver.ClientArgumentResolver;
-import com.py890000.cloud.core.resolver.TokenArgumentResolver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -18,9 +14,9 @@ import java.util.List;
  * @date 2018/8/25
  */
 public class LoginArgResolverConfig implements WebMvcConfigurer {
-    @Lazy
-    @Autowired
-    private UserService userService;
+//    @Lazy
+//    @Autowired
+//    private UserService userService;
     /**
      * Token参数解析
      *
@@ -29,7 +25,7 @@ public class LoginArgResolverConfig implements WebMvcConfigurer {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         //注入用户信息
-        argumentResolvers.add(new TokenArgumentResolver(userService));
+       // argumentResolvers.add(new TokenArgumentResolver(userService));
         //注入应用信息
         argumentResolvers.add(new ClientArgumentResolver());
     }

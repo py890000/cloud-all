@@ -2,7 +2,6 @@ package com.py890000.cloud.oauth2.client.util;
 
 
 import com.py890000.cloud.core.constant.CommonConstant;
-import com.py890000.cloud.core.model.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -97,11 +96,11 @@ public class AuthUtils {
     public static String getUsername(Authentication authentication) {
         Object principal = authentication.getPrincipal();
         String username = null;
-        if (principal instanceof SysUser) {
-            username = ((SysUser) principal).getUsername();
-        } else if (principal instanceof String) {
-            username = (String) principal;
-        }
+//        if (principal instanceof SysUser) {
+//            username = ((SysUser) principal).getUsername();
+//        } else if (principal instanceof String) {
+//            username = (String) principal;
+//        }
         return username;
     }
 }

@@ -17,4 +17,6 @@ public class DefaultPasswordConfig {
 	public PasswordEncoder passwordEncoder()	{
 		return new BCryptPasswordEncoder();
 	}
+
+
 }

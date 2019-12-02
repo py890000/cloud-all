@@ -1,6 +1,6 @@
 package com.py890000.cloud.oauth2.client.converter;
 
-import com.py890000.cloud.core.model.SysUser;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -68,10 +68,10 @@ public class CustomUserAuthenticationConverter implements UserAuthenticationConv
                 principal = user;
             } else {
                 Integer id = (Integer)map.get("id");
-                SysUser user = new SysUser();
-                user.setUsername((String)principal);
-                user.setId(Long.valueOf(id));
-                principal = user;
+//                SysUser user = new SysUser();
+//                user.setUsername((String)principal);
+//                user.setId(Long.valueOf(id));
+//                principal = user;
             }
             return new UsernamePasswordAuthenticationToken(principal, "N/A", authorities);
         }

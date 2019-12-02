@@ -2,19 +2,17 @@ package com.py890000.cloud.auth.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
-import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 /**
@@ -27,57 +25,50 @@ import javax.sql.DataSource;
 @EnableAuthorizationServer
 @AutoConfigureAfter(AuthorizationServerEndpointsConfigurer.class)
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+    private static final String DEMO_RESOURCE_ID = "order";
 
-    private static String REALM="MY_OAUTH_REALM";
     @Autowired
-    private TokenStore tokenStore;
+    AuthenticationManager authenticationManager;
     @Autowired
-    private UserApprovalHandler userApprovalHandler;
+    DataSource dataSource;
+
     @Autowired
-    @Qualifier("authenticationManagerBean")
-    private AuthenticationManager authenticationManager;
+    private PasswordEncoder passwordEncoder;
 
-
-    @Resource
-    private DataSource dataSource;
-
-    /**
-     * 配置身份认证器，配置认证方式，TokenStore，TokenGranter，OAuth2RequestFactory
-     *
-     * @param endpoints
-     */
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints.tokenStore(tokenStore).userApprovalHandler(userApprovalHandler)
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        //        password 方案一：明文存储，用于测试，不能用于生产
+//        String finalSecret = "123456";
+//        password 方案二：用 BCrypt 对密码编码
+//        String finalSecret = new BCryptPasswordEncoder().encode("123456");
+        // password 方案三：支持多种编码，通过密码的前缀区分编码方式
+        String finalSecret = "{bcrypt}"+passwordEncoder.encode("123456");
+        //配置两个客户端,一个用于password认证一个用于client认证
+        clients.inMemory().withClient("client_1")
+                .resourceIds(DEMO_RESOURCE_ID)
+                .authorizedGrantTypes("client_credentials", "refresh_token")
+                .scopes("select")
+                .authorities("oauth2")
+                .secret(finalSecret)
+                .and().withClient("client_2")
+                .resourceIds(DEMO_RESOURCE_ID)
+                .authorizedGrantTypes("password", "refresh_token")
+                .scopes("select")
+                .authorities("oauth2")
+                .secret(finalSecret);
+    }
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints
+                .tokenStore(new JdbcTokenStore(dataSource))
                 .authenticationManager(authenticationManager);
     }
 
-    /**
-     * 配置应用名称 应用id
-     * 配置OAuth2的客户端相关信息
-     *
-     * @param clients
-     * @throws Exception
-     */
     @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.jdbc(dataSource);
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+        //允许表单认证
+        oauthServer.allowFormAuthenticationForClients();
     }
-
-
-    /**
-     * 对应于配置AuthorizationServer安全认证的相关信息，创建ClientCredentialsTokenEndpointFilter核心过滤器
-     * @param security
-     */
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) {
-        security
-                .tokenKeyAccess("isAuthenticated()")
-                .checkTokenAccess("permitAll()")
-                //让/oauth/token支持client_id以及client_secret作登录认证
-                .allowFormAuthenticationForClients();
-    }
-
-
 
 }

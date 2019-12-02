@@ -1,7 +1,7 @@
 package com.py890000.cloud.oauth2.client.store;
 
 
-import com.py890000.cloud.core.model.SysUser;
+
 import com.py890000.cloud.oauth2.client.converter.CustomUserAuthenticationConverter;
 import org.springframework.cloud.bootstrap.encrypt.KeyProperties;
 import org.springframework.context.annotation.Bean;
@@ -62,11 +62,11 @@ public class AuthJwtTokenStore {
         return (accessToken, authentication) -> {
             final Map<String, Object> additionalInfo = new HashMap<>(1);
             Object principal = authentication.getPrincipal();
-            //增加id参数
-            if (principal instanceof SysUser) {
-                SysUser user = (SysUser)principal;
-                additionalInfo.put("id", user.getId());
-            }
+//            //增加id参数
+//            if (principal instanceof SysUser) {
+//                SysUser user = (SysUser)principal;
+//                additionalInfo.put("id", user.getId());
+//            }
             ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
             return accessToken;
         };
